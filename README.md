@@ -1,7 +1,7 @@
 # TTT Config
 A weapon configuration tool for Trouble in Terrorist Town.
 
-Vanilla TTT doesn't like being configured, often requiring server owners to dive into the gamemode files themselves if they want to change what weapons spawn and how they're spawned. This tool aims to fix that by hooking into the gamemode through a few hacky methods and completely replaces the methods used to populate the map with entities.
+Vanilla TTT doesn't like being configured, often requiring server owners to dive into the gamemode files themselves if they want to change what weapons spawn and how they're spawned. This tool aims to fix that by hooking into the gamemode through a few hacky methods and completely replacing the methods used to populate the map with entities.
 
 ## Installation
 
@@ -21,7 +21,9 @@ Secondly it detours ents.TTT.PlaceExtraWeapons and ents.TTT.ProcessImportScript 
 
 By detouring the aforementioned functions we're effectively replacing the map population functions with our own. In these functions we essentially copy the same method the gamemode would normally use but instead of spawning entities on the map we're creating a list of entity categories (e.g. SPAWN_PISTOL, SPAWN_RIFLE, SPAWN_SNIPER) linked to a position.
 
-This list is then fed into our own spawn script which'll look through the configuration and spawn entities (together with their ammo) based on the categories created earlier, meaning that pistols get replaced by pistols and not by rifles.
+This list is then fed into our own spawn script which'll look through the configuration and spawn entities (together with their ammo) based on the categories created earlier, meaning that pistols get replaced by pistols and not by shotguns.
+
+To make things more interesting the tool also supports randomized fallbacks and uses a weighted random system, letting you easily configure rare weapon spawns.
 
 ###### Why does ammo spawn with weapons instead of in the normal spots?
 
