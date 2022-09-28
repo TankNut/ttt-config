@@ -16,6 +16,11 @@ WEAPON_EQUIP1 = 6
 WEAPON_EQUIP2 = 7
 WEAPON_ROLE   = 8
 
+ROLE_INNOCENT  = 0
+ROLE_TRAITOR   = 1
+ROLE_DETECTIVE = 2
+ROLE_NONE = ROLE_INNOCENT
+
 -- Our own enums
 
 SPAWN_AMMO = 1
@@ -110,10 +115,6 @@ local function updateAmmoSENT(data, class)
 
 		ent.AmmoType = config.Type
 		ent.AmmoMax = config.Max
-
-		if CLIENT and config.Name then
-			LANG.AddToLanguage("english", "ammo_" .. string.lower(config.Type), config.Name)
-		end
 	end
 end
 
@@ -152,9 +153,7 @@ local function updateSWEP(data, class)
 		ent.Primary.Ammo = config.Ammo or ent.Primary.Ammo
 		ent.AmmoEnt = config.AmmoEnt
 
-		if ent.AmmoEnt then
-			ent.Primary.DefaultClip = ent.Primary.ClipSize
-		end
+		ent.Primary.DefaultClip = config.DefaultClip or ent.Primary.ClipSize
 
 		ent.Limited = tobool(config.Limited)
 
@@ -185,7 +184,23 @@ for _, v in pairs(weapons.GetList()) do
 	updateSWEP(v, v.ClassName)
 end
 
-if SERVER then
+if CLIENT then
+	local function lang()
+		if not LANG then
+			return
+		end
+
+		for k, v in pairs(Config.Langs) do
+			LANG.AddToLanguage("english", k, v)
+		end
+
+		log("Updated lang info")
+	end
+
+	hook.Add("Initialize", "ttt_config", lang)
+
+	lang()
+else
 	local tttEnts = {
 		-- Entities
 		["item_ammo_357_ttt"] = SPAWN_AMMO,
