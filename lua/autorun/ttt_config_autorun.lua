@@ -114,6 +114,7 @@ local function updateAmmoSENT(data, class)
 		log("Updating ammo info:", class)
 
 		ent.AmmoType = config.Type
+		ent.AmmoAmount = config.Amount
 		ent.AmmoMax = config.Max
 	end
 end
