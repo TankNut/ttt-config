@@ -83,6 +83,10 @@ function Run(data)
 
 				if isnumber(winner) then
 					winner = config.Spawning[winner]
+
+					if isstring(winner) then
+						break
+					end
 				else
 					break
 				end
