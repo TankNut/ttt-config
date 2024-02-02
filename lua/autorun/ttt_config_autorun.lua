@@ -195,6 +195,10 @@ if CLIENT then
 			LANG.AddToLanguage("english", k, v)
 		end
 
+		for _, v in pairs(Config.Ammo) do
+			LANG.AddToLanguage("english", string.lower("ammo_" .. v.Type), v.Name)
+		end
+
 		log("Updated lang info")
 	end
 
