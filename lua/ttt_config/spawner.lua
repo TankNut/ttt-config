@@ -75,7 +75,19 @@ function Run(data)
 			end
 		end
 
-		local winner = istable(options) and weightedRandom(options) or options
+		local winner = options
+
+		if istable(winner) then
+			while true do
+				winner = weightedRandom(winner)
+
+				if isnumber(winner) then
+					winner = config.Spawning[winner]
+				else
+					break
+				end
+			end
+		end
 
 		SpawnWeapon(winner, pos, ang)
 
