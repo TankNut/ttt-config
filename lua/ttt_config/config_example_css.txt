@@ -73,7 +73,7 @@ Weapons = {
 	["simple_css_xm1014"] = {Kind = WEAPON_HEAVY, Ammo = "Buckshot", AmmoEnt = "item_box_buckshot_ttt"},
 
 	-- M249
-	["simple_css_m249"] = {Kind = WEAPON_HEAVY, Ammo = "AirboatGun", DefaultClip = 200},
+	["simple_css_m249"] = {Kind = WEAPON_HEAVY, Ammo = "AirboatGun"},
 
 	-- Grenades
 	["simple_css_smokegrenade"] = {Kind = WEAPON_NADE},
