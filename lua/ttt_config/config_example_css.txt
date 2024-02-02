@@ -1,0 +1,141 @@
+AddCSLuaFile()
+
+module("ttt_config.Config", package.seeall)
+
+-- Ammo defines
+
+Ammo = {
+	["item_ammo_pistol_ttt"] = {Name = "Pistol ammo", Type = "Pistol", Amount = 20, Max = 60},
+	["item_ammo_revolver_ttt"] = {Name = "357 ammo", Type = "AlyxGun", Amount = 6, Max = 24},
+	["item_ammo_smg1_ttt"] = {Name = "Rifle ammo", Type = "SMG1", Amount = 30, Max = 90},
+	["item_box_buckshot_ttt"] = {Name = "Buckshot shells", Type = "Buckshot", Amount = 8, Max = 24},
+	["item_ammo_357_ttt"] = {Name = "Sniper ammo", Type = "357", Amount = 6, Max = 24},
+}
+
+-- Weapon defines
+
+Weapons = {
+	-- Default weapons we want to leave untouched
+
+	["weapon_ttt_binoculars"] = true,
+	["weapon_ttt_c4"] = true,
+	["weapon_ttt_cse"] = true,
+	["weapon_ttt_decoy"] = true,
+	["weapon_ttt_defuser"] = true,
+	["weapon_ttt_flaregun"] = true,
+	["weapon_ttt_health_station"] = true,
+	["weapon_ttt_knife"] = true,
+	["weapon_ttt_phammer"] = true,
+	["weapon_ttt_push"] = true,
+	["weapon_ttt_radio"] = true,
+	["weapon_ttt_stungun"] = true,
+	["weapon_ttt_teleport"] = true,
+	["weapon_ttt_unarmed"] = true,
+	["weapon_ttt_wtester"] = true,
+	["weapon_zm_carry"] = true,
+	["weapon_zm_improvised"] = true,
+
+	["weapon_ttt_confgrenade"] = true,
+	["weapon_zm_molotov"] = true,
+
+	-- Pistols
+	["simple_css_elite"] = {Kind = WEAPON_PISTOL, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_glock"] = {Kind = WEAPON_PISTOL, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_p228"] = {Kind = WEAPON_PISTOL, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_usp"] = {Kind = WEAPON_PISTOL, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+
+	-- Deagles
+	["simple_css_fiveseven"] = {Kind = WEAPON_PISTOL, Ammo = "AlyxGun", AmmoEnt = "item_ammo_revolver_ttt"},
+	["simple_css_deagle"] = {Kind = WEAPON_PISTOL, Ammo = "AlyxGun", AmmoEnt = "item_ammo_revolver_ttt"},
+
+	-- SMG's
+	["simple_css_mac10"] = {Kind = WEAPON_HEAVY, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_mp5"] = {Kind = WEAPON_HEAVY, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_p90"] = {Kind = WEAPON_HEAVY, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_tmp"] = {Kind = WEAPON_HEAVY, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+	["simple_css_ump"] = {Kind = WEAPON_HEAVY, Ammo = "Pistol", AmmoEnt = "item_ammo_pistol_ttt"},
+
+	-- Rifles
+	["simple_css_ak47"] = {Kind = WEAPON_HEAVY, Ammo = "SMG1", AmmoEnt = "item_ammo_smg1_ttt"},
+	["simple_css_aug"] = {Kind = WEAPON_HEAVY, Ammo = "SMG1", AmmoEnt = "item_ammo_smg1_ttt"},
+	["simple_css_famas"] = {Kind = WEAPON_HEAVY, Ammo = "SMG1", AmmoEnt = "item_ammo_smg1_ttt"},
+	["simple_css_m4a1"] = {Kind = WEAPON_HEAVY, Ammo = "SMG1", AmmoEnt = "item_ammo_smg1_ttt"},
+	["simple_css_sg552"] = {Kind = WEAPON_HEAVY, Ammo = "SMG1", AmmoEnt = "item_ammo_smg1_ttt"},
+
+	-- Snipers
+	["simple_css_awp"] = {Kind = WEAPON_HEAVY, Ammo = "357", AmmoEnt = "item_ammo_357_ttt"},
+	["simple_css_g3sg1"] = {Kind = WEAPON_HEAVY, Ammo = "357", AmmoEnt = "item_ammo_357_ttt"},
+	["simple_css_scout"] = {Kind = WEAPON_HEAVY, Ammo = "357", AmmoEnt = "item_ammo_357_ttt"},
+	["simple_css_sg550"] = {Kind = WEAPON_HEAVY, Ammo = "357", AmmoEnt = "item_ammo_357_ttt"},
+
+	-- Shotguns
+	["simple_css_m3"] = {Kind = WEAPON_HEAVY, Ammo = "Buckshot", AmmoEnt = "item_box_buckshot_ttt"},
+	["simple_css_xm1014"] = {Kind = WEAPON_HEAVY, Ammo = "Buckshot", AmmoEnt = "item_box_buckshot_ttt"},
+
+	-- M249
+	["simple_css_m249"] = {Kind = WEAPON_HEAVY, Ammo = "AirboatGun", DefaultClip = 200},
+
+	-- Grenades
+	["simple_css_smokegrenade"] = {Kind = WEAPON_NADE},
+	["simple_css_flashbang"] = {Kind = WEAPON_NADE}
+}
+
+-- Spawn rules
+
+FallbackToRandom = true
+
+Spawning = {
+	[SPAWN_RANDOM] = {
+		[SPAWN_PISTOL] = 1,
+		[SPAWN_DEAGLE] = 1,
+		[SPAWN_SHOTGUN] = 1,
+		[SPAWN_SMG] = 1,
+		[SPAWN_GRENADE] = 1,
+		[SPAWN_RIFLE] = 1,
+		[SPAWN_SNIPER] = 1,
+		[SPAWN_HUGE] = 1
+	},
+	[SPAWN_PISTOL] = {
+		["simple_css_elite"] = 1,
+		["simple_css_usp"] = 1,
+		["simple_css_glock"] = 1,
+		["simple_css_p228"] = 1
+	},
+	[SPAWN_DEAGLE] = {
+		["simple_css_fiveseven"] = 1,
+		["simple_css_deagle"] = 1
+	},
+	[SPAWN_SHOTGUN] = {
+		["simple_css_m3"] = 1,
+		["simple_css_xm1014"] = 1
+	},
+	[SPAWN_SMG] = {
+		["simple_css_mac10"] = 1,
+		["simple_css_mp5"] = 1,
+		["simple_css_p90"] = 1,
+		["simple_css_tmp"] = 1,
+		["simple_css_ump"] = 1
+	},
+	[SPAWN_GRENADE] = {
+		["weapon_ttt_confgrenade"] = 1,
+		["simple_css_smokegrenade"] = 1,
+		["simple_css_flashbang"] = 1,
+		["weapon_zm_molotov"] = 1
+	},
+	[SPAWN_RIFLE] = {
+		["simple_css_ak47"] = 1,
+		["simple_css_aug"] = 1,
+		["simple_css_famas"] = 1,
+		["simple_css_m4a1"] = 1,
+		["simple_css_sg552"] = 1
+	},
+	[SPAWN_SNIPER] = {
+		["simple_css_awp"] = 1,
+		["simple_css_g3sg1"] = 1,
+		["simple_css_scout"] = 1,
+		["simple_css_sg550"] = 1
+	},
+	[SPAWN_HUGE] = "simple_css_m249"
+}
+
+Langs = {}
