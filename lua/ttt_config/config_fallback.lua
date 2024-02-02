@@ -83,3 +83,5 @@ Spawning = {
 	[SPAWN_SNIPER] = "weapon_zm_rifle",
 	[SPAWN_HUGE] = "weapon_zm_sledge"
 }
+
+Langs = {}
