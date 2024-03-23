@@ -374,7 +374,7 @@ else
 
 		local settings, entities = ImportScript.Read(map)
 
-		RemoveEntities(settings.replacespawns)
+		RemoveEntities(tobool(settings.replacespawns))
 
 		local cache = {}
 
